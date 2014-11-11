@@ -1,0 +1,8 @@
+class ZombieMailer < ActionMailer::Base
+  default from: "from@example.com"
+  def welcome_email(zombie)
+    @zombie = zombie    
+    @site_name = "localhost"
+    mail(:to => zombie.email, :subject => "Welcome to my website.")
+  end
+end

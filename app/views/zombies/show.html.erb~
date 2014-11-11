@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Username:</b>
+  <%= @zombie.username %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @zombie.age %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @zombie.bio %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @zombie.email %>
+</p>
+
+<p>
+  <b>Rotting:</b>
+  <%= @zombie.rotting %>
+</p>
+
+<p>
+ <b>Gravatar Url</b>
+ <%= @zombie.gravatarurl %>
+</p>
+
+<p>
+ <b>following</b>
+ <%= @zombie.following %>
+</p>
+<legend>Tweets of People You Are Following</legend>
+<% @tweet.each do |tweet| %>
+ <div class = "well" id="lol">
+        <div class = "row">
+           <div class="span1">
+              <%= link_to image_tag(Zombie.find_by_id(tweet.zombie_id).gravatar_url),Zombie.find_by_id(tweet.zombie_id) %>
+           </div>
+
+           <div class="span7">
+
+             <p class="text-info lead">
+                <%=  tweet.status %>
+             </p> 
+
+    		     <% if !tweet.likedby.include? current_user.id.to_s %>                              
+   		        	<a href="<%= updatelikes_path(:id=>tweet.id) %>"><button class="btn-info">Like</button></a>
+           	 <% else %>              
+   		        	<a href="<%= updatedislikes_path(:id=>tweet.id) %>"><button class="btn-danger">Unlike</button></a>         
+ 	  	       <% end %>
+             <br>
+             <%= time_ago_in_words(tweet.created_at) %>
+             <br>
+
+ 			       
+    			   <p class="muted">       
+                Posted By-
+      				  <%= link_to Zombie.find_by_id(tweet.zombie_id).username, Zombie.find_by_id(tweet.zombie_id) %>
+
+  		       </p>
+             </div>
+          </div>
+       </div>
+     </div>     
+  
+  
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_zombie_path(@zombie) %> |
+<%= link_to 'Back', zombies_path %>

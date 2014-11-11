@@ -1,0 +1,34 @@
+<legend>Listing Zombies</legend>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Age</th>
+    <th>Bio</th>
+    <th>Email</th>
+    <th>Rotting</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @zombies.each do |zombie| %>
+  <tr>
+    <td><%= zombie.username %></td>
+    <td><%= zombie.age %></td>
+    <td><%= zombie.bio %></td>
+    <td><%= zombie.email %></td>
+    <td><%= zombie.rotting %></td>
+    <td><%= zombie.tweets[0] %></td>
+    <% if current_user %>
+      <% if current_user.username == zombie.username %>
+        <td><%= link_to 'Show', zombie %></td>
+        <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
+        <td><%= link_to 'Destroy', zombie, confirm: 'Are you sure?', method: :delete %></td>
+      <% end %>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />

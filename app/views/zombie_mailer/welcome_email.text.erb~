@@ -1,0 +1,9 @@
+Welcome to <%= @site_name %>, <%= @zombie.username %>
+===============================================
+
+You have successfully signed up to <%= @site_name %>,
+your username is: <%= @zombie.username %>.
+
+To login to the site, just follow this link: <%= @url %>.
+
+Thanks for joining and have a great day!

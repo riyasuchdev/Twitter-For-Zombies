@@ -1,0 +1,22 @@
+<legend>Listing Tweets</legend>
+<table class="table">
+  <tr>
+    <th>Username</th>
+    <th>status</th>
+    <th>id</th>
+    <th>likes</th>
+    <th>liked by</th>
+  </tr>
+
+<% @tweet.each do |tweet| %>
+  <tr>
+    <td><%= current_user.username %></td>
+    <td><%=  tweet.status %></td>
+    <td><%=  tweet.zombie_id %></td>
+    <td><%= tweet.likes %></td>
+    <td><%= tweet.likedby %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

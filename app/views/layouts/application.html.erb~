@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter For Zombies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+
+  <%= stylesheet_link_tag    "bootstrap" %>
+  <%= stylesheet_link_tag    "bootstrap-responsive" %>
+  <%= stylesheet_link_tag    "application" %>
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 60px;
+      }
+#flash_error {
+  border: 1px solid #000066;
+  padding: 4px;
+  margin-bottom: 10px;
+  background-color: #cc3333;
+}
+
+#flash_notice {
+  border: 1px solid #000066;
+  padding: 4px;
+  margin-bottom: 10px;
+  background-color: #A3B15A;
+}
+
+      /* Custom container */
+      .container {
+        margin: 0 auto;
+        max-width: 1000px;
+      }
+      .container > hr {
+        margin: 60px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 80px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 100px;
+        line-height: 1;
+      }
+      .jumbotron .lead {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+
+
+      /* Customize the navbar links to be fill the entire space of the .navbar */
+      .navbar .navbar-inner {
+        padding: 0;
+      }
+      .navbar .nav {
+        margin: 0;
+        display: table;
+        width: 100%;
+      }
+      .navbar .nav li {
+        display: table-cell;
+        width: 1%;
+        float: none;
+      }
+      .navbar .nav li a {
+        font-weight: bold;
+        text-align: center;
+        border-left: 1px solid rgba(255,255,255,.75);
+        border-right: 1px solid rgba(0,0,0,.1);
+      }
+      .navbar .nav li:first-child a {
+        border-left: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      .navbar .nav li:last-child a {
+        border-right: 0;
+        border-radius: 0 3px 3px 0;
+      }
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+    </style>
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "bootstrap" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>        
+    <div class="container">
+
+      <div class="masthead">
+        <h2 class="muted ">Twitter For Zombies</h3>
+          <% if current_user %>
+             <h5 class="muted">Logged in as <%= link_to current_user.username,current_user %></h2>           
+	     <h5 class="muted"><%= link_to "Log out",signedout_path %></h5>	
+             <h5 class="muted"><%= link_to "Account Settings", edit_zombie_path(current_user) %></h5>
+	  <% end %>	
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li><a href="<%= home_path %>">Home</a></li>
+                <li><a href="<%= signin_path %>">Sign In</a></li>
+                <li><a href="<%= register_path %>">Register</a></li>                
+                <li><a href="<%= listing_path %>">Listing</a></li>
+                <% if current_user %>
+                  <li><a href="<%= tweets_path %>">Tweets</a></li>
+                  <li><a href="<%= mytweets_path %>">My Tweets</a></li>
+                <% end %>    
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.navbar -->
+      </div>
+<%= yield %>
+      <hr>
+
+      <div class="footer">
+        <p>&copy; Company 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+</body>
+</html>

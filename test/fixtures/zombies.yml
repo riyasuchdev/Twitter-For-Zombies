@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: MyString
+  age: 1
+  bio: MyText
+  email: MyString
+  rotting: false
+
+two:
+  username: MyString
+  age: 1
+  bio: MyText
+  email: MyString
+  rotting: false

@@ -1,0 +1,4 @@
+class AddGravatorUrlToZombies < ActiveRecord::Migration
+  def change
+  end
+end
